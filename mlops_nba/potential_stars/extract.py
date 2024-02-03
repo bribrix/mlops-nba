@@ -3,9 +3,9 @@ from pathlib import Path
 
 import pandas as pd
 
-from mlops_nba.common.io import create_folder
-from mlops_nba.common.dates import get_now
-from mlops_nba.config import CURATED_DATA_DIR, RAW_DATA_DIR
+from common.io import create_folder
+from common.dates import get_now
+from config import CURATED_DATA_DIR, RAW_DATA_DIR
 
 OUTPUT_FILENAME = "curated_players"
 # can be automated in next versions
