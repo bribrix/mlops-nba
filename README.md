@@ -1,4 +1,4 @@
-# NBA Data Analysis and Prediction by Briac Marchandise
+# NBA Data Analysis and Prediction by Briac Marchandise & Matteo Valentini
 
 This Python script is designed to process, analyze, and predict data related to the National Basketball Association (NBA) using machine learning. It encapsulates a typical machine learning project workflow, including data preparation, model training, prediction, and saving the results.
 
