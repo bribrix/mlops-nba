@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemple de Page</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <h2>{{ subtitle }}</h2>
+        <form action="/action_page">
+            <label for="options">Choisissez une option:</label>
+            <select name="options" id="options">
+                {% for option in options %}
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>
