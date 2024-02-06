@@ -1,0 +1,10 @@
+2024-02-03 22:52:04,484:INFO:Processing 2023-2024 NBA Player Stats - Regular.csv...
+2024-02-03 22:52:04,496:INFO:Data processed for 2023-2024 NBA Player Stats - Regular.csv, DataFrame shape: (546, 33) in 0.01 seconds
+2024-02-03 22:52:04,512:INFO:Merged data stored in dataset\curated\curated_player-20240203__225204.csv
+2024-02-03 22:52:04,512:INFO:Starting model training...
+2024-02-03 22:52:04,875:INFO:RMSE for PTS prediction: 0.5381898532876834
+2024-02-03 22:52:04,892:INFO:Model saved as pts_prediction_model_20240203-225204.joblib
+2024-02-03 22:52:04,897:INFO:Model parameters saved as model_params_20240203-225204.txt
+2024-02-03 22:52:04,897:INFO:Model training completed with RMSE: 0.5381898532876834
+2024-02-03 22:52:04,897:INFO:Starting prediction...
+2024-02-03 22:52:04,897:INFO:Prediction completed.
