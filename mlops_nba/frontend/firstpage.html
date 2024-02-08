@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemple de Page</title>
+    <title>NBA predictions</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>{{ title }}</h1>
-        <h2>{{ subtitle }}</h2>
+        <img src="/static/Website banner 5.jpg" alt="Banner">
+        <h1>NBA Predictions</h1>
+        <h2>Predict the number of points of a player using ML</h2>
+        <br><br>
         <form action="/action_page">
-            <label for="options">Choisissez une option:</label>
-            <select name="options" id="options">
+            <label for="date">Select a date:</label>
+            <input type="date" id="date" name="date">
+            <input type="submit">
+            <br><br><br>
+            <label for="dropdown">Choose a match:</label>
+            <select id="dropdown" name="dropdown">
+                <option value="" disabled selected>Choose the day match...</option>
                 {% for option in options %}
                 <option value="{{ option }}">{{ option }}</option>
                 {% endfor %}
             </select>
-            <input type="submit">
         </form>
     </div>
+    <script src="/static/script.js"></script>
 </body>
 </html>

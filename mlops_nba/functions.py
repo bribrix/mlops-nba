@@ -9,6 +9,9 @@ import logging
 import time
 import joblib
 import datetime
+import csv
+import os
+
 
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
@@ -16,6 +19,11 @@ from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
+from nba_api.stats.static import players
+from nba_api.stats.endpoints import playergamelog
+from nba_api.stats.endpoints import playercareerstats
+from nba_api.stats.endpoints import teamestimatedmetrics
+
 
 
 def save_model_params(model, filename):
@@ -139,3 +147,26 @@ def predict_and_store_output(model, X_test, y_test):
     output_file = OUTPUT_DIR / f"predictions_{current_time}.csv"
     output_df.to_csv(output_file, index=False)
     logging.info(f"Predictions stored in {output_file}")
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+file_path_schedule = os.path.join(BASE_DIR, "../dataset/NBASchedule23-24.csv")
+
+def read_first_column_of_csv(file_path_schedule):
+    with open(file_path_schedule, mode='r', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        # Extraction de la première colonne pour chaque ligne
+        column_data = [row[1] for row in reader if row]  # S'assure que la ligne n'est pas vide
+    return column_data
+
+def read_schedule(file_path_schedule):
+    with open(file_path_schedule, mode='r', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        schedule = {}
+        for row in reader:
+            date, match = row[0], row[1]  # Ajustez les indices selon votre fichier CSV
+            if date in schedule:
+                schedule[date].append(match)
+            else:
+                schedule[date] = [match]
+    return schedule

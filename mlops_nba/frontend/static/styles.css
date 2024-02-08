@@ -1,12 +1,31 @@
 body, html {
-    height: 100%;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    padding: 0;
+    width: 100%;
+    height: 150%;
+    font-family: Arial, sans-serif;
 }
 
 .container {
-    flex-direction: column;
+    text-align: center;
+    display: block;
+}
+
+header {
+    width: 160%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Empêche l'image de déborder */
+}
+
+img {
+    width: 100%; /* L'image prend toute la largeur du header */
+    max-height: 250px; /* Hauteur maximale pour le bandeau */
+    object-fit: cover; /* Assure que l'image couvre bien l'espace */
+}
+
+/* Styles pour le reste du contenu */
+form {
+    margin-top: 20px;
 }
