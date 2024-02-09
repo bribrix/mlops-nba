@@ -23,6 +23,7 @@ from nba_api.stats.static import players
 from nba_api.stats.endpoints import playergamelog
 from nba_api.stats.endpoints import playercareerstats
 from nba_api.stats.endpoints import teamestimatedmetrics
+from nba_api.stats.endpoints import teamgamelogs
 
 
 
@@ -74,6 +75,34 @@ def process_file(file_path):
     return processed_data
  
 
+def fetch_nba_player_stats(season, existing_player_ids=[]):
+    nba_players = players.get_active_players()
+    all_players_stats_list = []  
+
+    for player in nba_players:
+        if player['is_active'] and player['id'] not in existing_player_ids:  # only active players not in existing data
+            player_id = player['id']
+            try:
+                gamelog = playergamelog.PlayerGameLog(player_id=player_id, season=season)
+                df = gamelog.get_data_frames()[0]
+                all_players_stats_list.append(df)
+            except Exception as e:
+                print(f"Erreur lors de la récupération des données pour le joueur {player['full_name']} (ID: {player_id}): {e}")
+
+    all_players_stats = pd.concat(all_players_stats_list, ignore_index=True)
+    return all_players_stats
+
+
+def fetch_team_game_stats(season):
+    try:
+        # Récupère les logs de matchs d'équipes pour la saison spécifiée
+        team_game_stats = teamgamelogs.TeamGameLogs(season_nullable=season)
+        # Le premier DataFrame retourné contient les données souhaitées
+        df_team_game_stats = team_game_stats.get_data_frames()[0]
+        return df_team_game_stats
+    except Exception as e:
+        print(f"Erreur lors de la récupération des logs de matchs d'équipes pour la saison {season}: {e}")
+        return pd.DataFrame()
 
 
 def merge_and_store_data(all_data):
