@@ -26,5 +26,5 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: mlops_nba:latest
+        tags: bribrix/mlops_nba:latest
 
