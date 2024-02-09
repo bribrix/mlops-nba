@@ -3,7 +3,7 @@ import logging
 import time
 import sys
 from config import RAW_DATA_DIR, CURATED_DATA_DIR, OUTPUT_DIR
-from functions import merge_and_store_data, train_model, process_file
+from functions import merge_and_store_data, train_model, process_file, fetch_team_game_stats
 from common.io import create_folder
 
 
@@ -31,6 +31,18 @@ if __name__ == "__main__":
         print(f"Curated data directory {CURATED_DATA_DIR} exists.")
     else:
         print(f"Curated data directory {CURATED_DATA_DIR} created.")
+
+    # Collect new data
+    season = '2023-24'  # Update as necessary
+    print("Collecting new NBA player stats...")
+    try:
+        new_data = fetch_team_game_stats(season)
+        new_data_file_path = RAW_DATA_DIR / f'nba_player_stats_{current_time}.csv'
+        new_data.to_csv(new_data_file_path, index=False)
+        print(f"New data collected and saved to {new_data_file_path}")
+    except Exception as e:
+        logging.error(f"Failed to collect new data: {e}")
+        sys.exit(1)
  
     raw_data_files = list(RAW_DATA_DIR.glob("*.csv"))
     if not raw_data_files:
