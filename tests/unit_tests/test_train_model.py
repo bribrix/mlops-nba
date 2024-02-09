@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from functions import train_model
+from mlops_nba.functions import train_model
 from sklearn.model_selection import train_test_split
 
 class TestTrainModel(unittest.TestCase):
