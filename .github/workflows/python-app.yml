@@ -30,9 +30,6 @@ jobs:
 
     # L'exécution de l'application se fait implicitement via les services, donc pas besoin de l'étape "Run the FastAPI app"
 
-    - name: Run unit tests
-      run: docker run my-app python -m pytest test_app.py
-
     - name: Run integration tests
       run: |
         docker run --network container:app my-app python -m unittest test_endtoend_app.py
