@@ -22,7 +22,17 @@
                     <select id="dropdown" name="dropdown">
                         <option value="" disabled selected>Choose the day match...</option>
                         <!-- options will be inserted here -->
+                        
                     </select>
+                    <br><br>
+                    <!-- Conteneur pour les cases à cocher Home et Away -->
+                    <div id="teamSelection" style="display: none;">
+                        <input type="checkbox" id="home" name="home">
+                        <label for="home">Home</label><br>
+                        <input type="checkbox" id="away" name="away">
+                        <label for="away">Away</label><br>
+            </div>
+            <br>
                 </div>
                 <button type="submit" class="submit-btn">Submit</button>
             </form>
@@ -32,12 +42,6 @@
         </div>
         <iframe id="streamlitFrame"></iframe>
     </div>
-    <script>
-        function loadStreamlit() {
-            var iframe = document.getElementById('streamlitFrame');
-            iframe.src = "http://localhost:8501";
-            iframe.style.display = "block";
-        }
-    </script>
+    <script src="/static/script.js"></script>
 </body>
 </html>
