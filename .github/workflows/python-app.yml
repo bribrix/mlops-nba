@@ -24,7 +24,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: DOCKERFILE
+        file: ./DOCKERFILE
         push: true
         tags: mlops_nba:latest
 
