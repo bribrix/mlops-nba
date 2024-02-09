@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA predictions</title>
+    <title>NBA Predictions</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <div class="container">
-        <img src="/static/Website banner 5.jpg" alt="Banner">
-        <h1>NBA Predictions</h1>
-        <h2>Predict the number of points of a player using ML</h2>
-        <br><br>
-        <form action="/action_page">
-            <label for="date">Select a date:</label>
-            <input type="date" id="date" name="date">
-            <input type="submit">
-            <br><br><br>
-            <label for="dropdown">Choose a match:</label>
-            <select id="dropdown" name="dropdown">
-                <option value="" disabled selected>Choose the day match...</option>
-                {% for option in options %}
-                <option value="{{ option }}">{{ option }}</option>
-                {% endfor %}
-            </select>
-        </form>
+        <header>
+            <img src="/static/Website banner 5.jpg" alt="Banner" class="banner">
+            <h1>NBA Predictions</h1>
+            <h2>Predict the number of points of a player using ML</h2>
+        </header>
+        <div class="form-container">
+            <form action="/action_page" class="date-form">
+                <div class="form-group">
+                    <input type="date" id="date" name="date">
+                </div>
+                <div class="form-group">
+                    <select id="dropdown" name="dropdown">
+                        <option value="" disabled selected>Choose the day match...</option>
+                        <!-- options will be inserted here -->
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <div class="viz-space">
+                <button onclick="loadStreamlit()" class="viz-btn">See the Visualization</button>
+            </div>
+        </div>
+        <iframe id="streamlitFrame"></iframe>
     </div>
-    <script src="/static/script.js"></script>
+    <script>
+        function loadStreamlit() {
+            var iframe = document.getElementById('streamlitFrame');
+            iframe.src = "http://localhost:8501";
+            iframe.style.display = "block";
+        }
+    </script>
 </body>
 </html>
