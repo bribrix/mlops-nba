@@ -1,6 +1,11 @@
 import unittest
 from pathlib import Path
-from common.io import create_folder
+from mlops_nba.common.io import create_folder
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parents[2]))  # Ajoute le répertoire racine du projet
+
+
 
 class TestCreateFolder(unittest.TestCase):
     def test_create_folder(self):
