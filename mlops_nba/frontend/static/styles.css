@@ -2,30 +2,77 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 150%;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5;
 }
 
 .container {
     text-align: center;
-    display: block;
 }
 
 header {
-    width: 160%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Empêche l'image de déborder */
+    background: linear-gradient(to right, #6dd5fa, #ff758c);
+    color: white;
+    padding: 20px;
+    border-bottom: 5px solid #ff758c;
 }
 
-img {
-    width: 100%; /* L'image prend toute la largeur du header */
-    max-height: 250px; /* Hauteur maximale pour le bandeau */
-    object-fit: cover; /* Assure que l'image couvre bien l'espace */
+.banner {
+    max-height: 250px;
+    width: auto;
+    margin-bottom: 20px;
 }
 
-/* Styles pour le reste du contenu */
-form {
+.form-container {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 500px;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.submit-btn, .viz-btn {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover, .viz-btn:hover {
+    background-color: #45a049;
+}
+
+iframe {
+    width: 100%;
+    height: 800px;
+    border: none;
+    display: none;
     margin-top: 20px;
+}
+
+.viz-space {
+    margin-top: 30px;
 }
