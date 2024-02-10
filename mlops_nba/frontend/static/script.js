@@ -15,3 +15,23 @@ document.getElementById('date').addEventListener('change', function() {
             });
         });
 });
+
+function matchSelected() {
+    var dropdown = document.getElementById('dropdown');
+    var teamSelection = document.getElementById('teamSelection');
+    
+    if(dropdown.value !== "") {
+        teamSelection.style.display = "block";
+    } else {
+        teamSelection.style.display = "none";
+    }
+}
+
+function loadStreamlit() {
+    var iframe = document.getElementById('streamlitFrame');
+    iframe.src = "http://localhost:8501";
+    iframe.style.display = "block";
+}
+
+document.getElementById('dropdown').addEventListener('change', matchSelected);
+
